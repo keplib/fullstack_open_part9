@@ -52,4 +52,16 @@ const calculateExercise = (exerciseArray: number[], target: number): ExerciseRes
   };
 };
 
-console.log(calculateExercise([3, 3, 2, 4.5, 1, 3, 1], 2));
+const inputSequence = process.argv;
+const exerciseSequence = inputSequence.slice(2, -1).map((item) => Number(item));
+const target = Number(inputSequence.slice(-1)[0]);
+
+const containsNaN = (inputArray: Array<Number>) => {
+  return inputArray.some(Number.isNaN);
+};
+
+if (containsNaN(exerciseSequence) || isNaN(target)) {
+  throw new Error('You can only provide numbers!');
+} else {
+  console.log(calculateExercise(exerciseSequence, target));
+}
