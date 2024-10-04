@@ -56,12 +56,16 @@ const inputSequence = process.argv;
 const exerciseSequence = inputSequence.slice(2, -1).map((item) => Number(item));
 const target = Number(inputSequence.slice(-1)[0]);
 
-const containsNaN = (inputArray: Array<number>) => {
-  return inputArray.some(Number.isNaN);
-};
-
-if (containsNaN(exerciseSequence) || isNaN(target)) {
-  throw new Error('You can only provide numbers!');
-} else {
-  console.log(calculateExercise(exerciseSequence, target));
+if (require.main === module) {
+  try {
+    console.log(calculateExercise(exerciseSequence, target));
+  } catch (error: unknown) {
+    let errorMessage = 'Something bad happened.';
+    if (error instanceof Error) {
+      errorMessage += ' Error: ' + error.message;
+    }
+    console.log(errorMessage);
+  }
 }
+
+export default calculateExercise;
