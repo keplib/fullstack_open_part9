@@ -27,7 +27,7 @@ app.get('/bmi', (req, res) => {
       height: heightValue,
       bmi: bmi,
     });
-  } catch (error) {
+  } catch {
     res.status(404).json({
       error: 'malformatted parameters',
     });

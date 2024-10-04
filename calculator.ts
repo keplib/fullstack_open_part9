@@ -6,7 +6,7 @@ const calculator = (a: number, b: number, op: Operation): Result => {
     return a * b;
   } else if (op === 'add') {
     return a + b;
-  } else if (op === 'divide') {
+  } else {
     if (b === 0) return "can't divide by 0!";
     return a / b;
   }
