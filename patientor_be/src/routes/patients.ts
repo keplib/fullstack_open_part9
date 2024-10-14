@@ -9,4 +9,8 @@ patientsRouter.get('/', (_req, res: Response<NonSensitivePatientData[]>) => {
   res.send(patientsService.getPatients());
 });
 
+patientsRouter.post('/', (_req, res: Response<string>) => {
+  res.send('Hello');
+});
+
 export default patientsRouter;
